@@ -56,4 +56,17 @@ export class UserService {
     return firstValueFrom(obsHttp$)
   }
 
+  deleteById(id: number): Promise<any> {
+    const token = this.authService.token as string
+    console.log(token)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    const options = {headers}
+    const obsHttp$ = this.http
+      .delete(`${this.fullBaseUrlApi}/${id}`, options)
+
+    return firstValueFrom(obsHttp$)
+  }
+
 }

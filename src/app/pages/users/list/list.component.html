@@ -5,12 +5,51 @@
         <h5 class="card-title">Username: {{user.username}}</h5>
         <p class="card-text">{{user.fullname}}</p>
         <p class="card-text"> habite: {{user.fulladdress}}</p>
-        <a [routerLink]="['/','users',user.id]"
-        class="btn btn-outline-dark text-uppercase mx-1">
-          détails
-        </a>
+        <div class="row-gap-1">
+          <a [routerLink]="['/','users',user.id]"
+             class="btn btn-outline-dark text-uppercase mx-1">
+            détails
+          </a>
+          <button
+            (click)="onClickDeleteUser(modalDeleteUser, user)"
+            class="btn btn-outline-danger text-uppercase mx-2">
+            SUPPRIMER
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
 </div>
+<ngb-toast
+  *ngIf="showDeleteSuccessToast"
+  class="position-fixed top-0 end-0 p-1 m-3 bg-success text-light"
+  [autohide]="true"
+  [delay]="4000"
+  (hidden)="showDeleteSuccessToast = false"
+>Suppression effectuée avec succès !
+</ngb-toast>
+<ng-template #modalDeleteUser let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Suppression utilisateur</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-describedby="modal-title"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <strong>Étes-vous sûr de vouloir supprimer l'utilisateur <span
+        class="text-primary">{{selectedUserDeleteConfirmation?.fullname}}</span> ?</strong>
+    </p>
+    <p>
+      <span class="text-danger"> La suppression est irréversible !</span>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Annuler</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close()">Confirmer</button>
+  </div>
+</ng-template>
