@@ -5,6 +5,10 @@
         <h5 class="card-title">Username: {{user.username}}</h5>
         <p class="card-text">{{user.fullname}}</p>
         <p class="card-text"> habite: {{user.fulladdress}}</p>
+        <a [routerLink]="['/','users',user.id]"
+        class="btn btn-outline-dark text-uppercase mx-1">
+          détails
+        </a>
       </div>
     </div>
   </div>
