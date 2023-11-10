@@ -1,0 +1,26 @@
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col-md-4" *ngFor="let product of products$ | async">
+    <div class="card text-center m-2 shadow" style="width: 18rem;min-height: 350px">
+      <img [ngSrc]="product.image" class="card-img-top p-2" alt="..."
+            width="280"
+            height="200">
+      <!--      <img [ngSrc]="product.image" class="card-img-top" alt="..." fill="true">-->
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <span> {{product.price}} €</span>
+        <div class="row-gap-1">
+          <a [routerLink]="['/','products',product.id]"
+             class="btn btn-outline-dark text-uppercase mx-1">
+            détails
+          </a>
+          <!--          <button-->
+          <!--            (click)="onClickDeleteUser(modalDeleteUser, user)"-->
+          <!--            class="btn btn-outline-danger text-uppercase mx-2">-->
+          <!--            SUPPRIMER-->
+          <!--          </button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
