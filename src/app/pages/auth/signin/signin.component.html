@@ -1,0 +1,22 @@
+<form (ngSubmit)="onSubmitSignIn(signInForm)" #signInForm="ngForm">
+  <h1 class="text-center bg bg-dark text-white">CONNEXION</h1>
+  <div *ngIf="errMsg" class="art alert-danger p-1 m-2 text-center">{{errMsg}}</div>
+  <div class="mb-3">
+    <label for="exampleInputUsername" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username"  id="exampleInputUsername" aria-describedby="usernameHelp" required ngModel>
+    <div id="usernameHelp" class="form-text">We'll never share your username with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" required ngModel>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" name="keepConnection" class="form-check-input" id="exampleCheck1" [ngModel]="false">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="signInForm.invalid">
+    Se Connecter
+  </button>
+</form>
